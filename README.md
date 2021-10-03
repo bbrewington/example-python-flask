@@ -1,8 +1,10 @@
 # example-python-flask
 
-Following freeCodeCamp.org's tutorial "Learn Flask for Python": https://www.youtube.com/watch?v=Z1RJmh_OqeA 
+Following freeCodeCamp.org's tutorial "Learn Flask for Python": https://www.youtube.com/watch?v=Z1RJmh_OqeA, and providing some notes 
 
-note: steps below written as executed on Mac OSX
+This is a very simple CRUD web app that makes use of Python Flask library (with Jinja2 templating & sqlite database)
+
+Steps below written as executed on macOS
 
 ### Step 1. Set up Virtual Environment
 ```
@@ -22,9 +24,11 @@ Code is in `app.py`, `base.html`, and `index.html` (styling via `static/css/main
    
 ### Step 4: Initialize database
 In terminal, start an interactive python3 shell (while still in virtualenv "env"):
-```python
-from app import db
-db.create_all()
+```
+python3
+>>> from app import db
+>>> db.create_all()
+>>> quit()
 ```
 This creates the sqlite database file test.db in the project root directory
 
@@ -34,7 +38,22 @@ In terminal, start the app:
 python3 app.py
 ```
 
-Not covering deployment to heroku, but he covers it in the tutorial here: https://youtu.be/Z1RJmh_OqeA?t=2484
+Open browser and go to http://localhost:5000
+
+1. Initial screen: add some tasks
+   ![](assets/initial_notasks.png)
+
+
+2. After adding tasks
+   ![](assets/withtasks.png)
+
+
+3. Clicking "Update" link on a task takes you to "Update Task" page
+   ![](assets/update_screen.png)
+
+
+4. After clicking "Update" button, redirects back to "Task Master" page with task updated
+   ![](assets/after_update.png)
 
 ### Appendix: Notes on features & conventions
 * HTML template inheritance: The curly brace / percent signs (e.g. `{% block head %}{% endblock %}`) are [Jinja syntax](https://jinja.palletsprojects.com/en/3.0.x/templates/#base-template). In this example, the blocks define two blocks that child templates can fill in. All the block tag does is tell the template engine that a child template may override those placeholders in the template.
@@ -46,3 +65,5 @@ Not covering deployment to heroku, but he covers it in the tutorial here: https:
   - `index.html` inherits from `base.html`
   - Create, Update, and Delete transactions to the sqlite database are handled via API endpoints defined in `app.py` (see the `@app.route`) lines
   - Current state of task table is queried from the sqlite database.  Example: `tasks = Todo.query.order_by(Todo.date_created).all()`
+* Deploying to the web
+  - Heroku: covered in the tutorial here: https://youtu.be/Z1RJmh_OqeA?t=2484
