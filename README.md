@@ -41,19 +41,23 @@ python3 app.py
 Open browser and go to http://localhost:5000
 
 1. Initial screen: add some tasks
-   ![](assets/initial_notasks.png)
+
+    ![](assets/initial_notasks.png)
 
 
 2. After adding tasks
-   ![](assets/withtasks.png)
+
+    ![](assets/withtasks.png)
 
 
 3. Clicking "Update" link on a task takes you to "Update Task" page
-   ![](assets/update_screen.png)
+
+    ![](assets/update_screen.png)
 
 
 4. After clicking "Update" button, redirects back to "Task Master" page with task updated
-   ![](assets/after_update.png)
+
+    ![](assets/after_update.png)
 
 ### Appendix: Notes on features & conventions
 * HTML template inheritance: The curly brace / percent signs (e.g. `{% block head %}{% endblock %}`) are [Jinja syntax](https://jinja.palletsprojects.com/en/3.0.x/templates/#base-template). In this example, the blocks define two blocks that child templates can fill in. All the block tag does is tell the template engine that a child template may override those placeholders in the template.
